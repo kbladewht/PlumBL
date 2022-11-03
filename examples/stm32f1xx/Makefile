@@ -9,6 +9,7 @@ RTT_VIEWER?=y
 
 RM = cmake -E remove_directory
 #cmake definition config
+# cmake_definition+= -DTOOLCHAIN_PREFIX=H:/Dev/arm-gnu-toolchain/bin/arm-none-eabi-
 cmake_definition+= -DTOOLCHAIN_PREFIX=arm-none-eabi-
 cmake_definition+= -DCHIP_FAMILY=stm32f1xx
 cmake_definition+= -DCHIP=${CHIP}

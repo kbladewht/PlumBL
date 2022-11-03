@@ -20,7 +20,7 @@
 #endif
 
 #ifndef DBRST_TAP_DELAY
-#define DBRST_TAP_DELAY 100
+#define DBRST_TAP_DELAY 300
 #endif
 
 #ifndef COMPLETE_DELAY

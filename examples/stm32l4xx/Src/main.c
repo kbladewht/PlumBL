@@ -21,7 +21,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#ifdef RTT_VIEWER
+#include "SEGGER_RTT.h"
+#endif
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -54,6 +57,54 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void usb_dc_low_level_init(void)
+{
+    HAL_PWREx_EnableVddUSB();
+
+    RCC_PeriphCLKInitTypeDef PeriphClkInit = { 0 };
+    /** Initializes the peripherals clock
+     */
+    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
+    PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLLSAI1;
+    PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_MSI;
+    PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
+    PeriphClkInit.PLLSAI1.PLLSAI1N = 24;
+    PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
+    PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
+    PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
+    PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_48M2CLK;
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
+        Error_Handler();
+    }
+
+    /* Peripheral clock enable */
+    __HAL_RCC_USB_CLK_ENABLE();
+
+    /* Peripheral interrupt init */
+    HAL_NVIC_SetPriority(USB_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(USB_IRQn);
+}
+
+int __io_putchar(int ch)
+{
+#ifdef RTT_VIEWER
+    SEGGER_RTT_PutChar(0, ch);
+#endif
+    // while ((USART1->SR & USART_SR_TXE) == 0) {
+    // }
+    // USART1->DR = ch;
+    return ch;
+}
+
+int _write(int fd, char *pBuffer, int size)
+{
+    extern int __io_putchar(int ch);
+    for (int i = 0; i < size; i++) {
+        __io_putchar(*pBuffer++);
+    }
+    return size;
+}
+
 
 /* USER CODE END 0 */
 
