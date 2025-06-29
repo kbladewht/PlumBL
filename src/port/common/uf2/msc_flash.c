@@ -19,6 +19,7 @@
 #define MSC_MAX_MPS 64
 #endif
 
+
 const uint8_t msc_flash_descriptor[] = {
     USB_DEVICE_DESCRIPTOR_INIT(USB_2_0, 0x00, 0x00, 0x00, USBD_VID, USBD_PID, 0x0200, 0x01),
     USB_CONFIG_DESCRIPTOR_INIT(USB_CONFIG_SIZE, 0x01, 0x01, USB_CONFIG_BUS_POWERED, USBD_MAX_POWER),
@@ -32,8 +33,8 @@ const uint8_t msc_flash_descriptor[] = {
     ///////////////////////////////////////
     0x14,                       /* bLength */
     USB_DESCRIPTOR_TYPE_STRING, /* bDescriptorType */
-    'L', 0x00,                  /* wcChar0 */
-    'G', 0x00,                  /* wcChar1 */
+    'Q', 0x00,                  /* wcChar0 */
+    'F', 0x00,                  /* wcChar1 */
     ' ', 0x00,                  /* wcChar2 */
     'S', 0x00,                  /* wcChar3 */
     't', 0x00,                  /* wcChar4 */
@@ -46,14 +47,14 @@ const uint8_t msc_flash_descriptor[] = {
     ///////////////////////////////////////
     0x1e,                       /* bLength */
     USB_DESCRIPTOR_TYPE_STRING, /* bDescriptorType */
-    'P', 0x00,                  /* wcChar0 */
-    'l', 0x00,                  /* wcChar1 */
-    'u', 0x00,                  /* wcChar2 */
-    'm', 0x00,                  /* wcChar3 */
+    'Q', 0x00,                  /* wcChar0 */
+    'F', 0x00,                  /* wcChar1 */
+    ' ', 0x00,                  /* wcChar4 */
     'B', 0x00,                  /* wcChar4 */
     'o', 0x00,                  /* wcChar5 */
     'o', 0x00,                  /* wcChar6 */
     't', 0x00,                  /* wcChar7 */
+    ' ', 0x00,                  /* wcChar4 */
     'l', 0x00,                  /* wcChar8 */
     'o', 0x00,                  /* wcChar9 */
     'a', 0x00,                  /* wcChar10 */

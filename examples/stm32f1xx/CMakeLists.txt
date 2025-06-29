@@ -25,8 +25,8 @@ sdk_add_compile_definitions(-DUSBD_DFU_XFER_SIZE=4096)
 endif()
 
 if(${BL_TYPE} STREQUAL "uf2")
-sdk_add_compile_definitions(-DUF2_BOARD_ID="Plum Bootloader for STM32F103")
-sdk_add_compile_definitions(-DUF2_VOLUME_LABEL="STM32F1Plum")
+sdk_add_compile_definitions(-DUF2_BOARD_ID="QF Bootloader for STM32F103")
+sdk_add_compile_definitions(-DUF2_VOLUME_LABEL="STM32F1QF")
 sdk_add_compile_definitions(-DBOARD_UF2_FAMILY_ID=0xabcdf103)
 endif()
 

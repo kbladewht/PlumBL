@@ -11,8 +11,8 @@ const uint8_t dfu_flash_descriptor[] = {
     ///////////////////////////////////////
     0x14,                       /* bLength */
     USB_DESCRIPTOR_TYPE_STRING, /* bDescriptorType */
-    'L', 0x00,                  /* wcChar0 */
-    'G', 0x00,                  /* wcChar1 */
+    'Q', 0x00,                  /* wcChar0 */
+    'F', 0x00,                  /* wcChar1 */
     ' ', 0x00,                  /* wcChar2 */
     'S', 0x00,                  /* wcChar3 */
     't', 0x00,                  /* wcChar4 */
@@ -25,10 +25,8 @@ const uint8_t dfu_flash_descriptor[] = {
     ///////////////////////////////////////
     0x1e,                       /* bLength */
     USB_DESCRIPTOR_TYPE_STRING, /* bDescriptorType */
-    'P', 0x00,                  /* wcChar0 */
-    'l', 0x00,                  /* wcChar1 */
-    'u', 0x00,                  /* wcChar2 */
-    'm', 0x00,                  /* wcChar3 */
+    'Q', 0x00,                  /* wcChar0 */
+    'F', 0x00,                  /* wcChar1 */
     'B', 0x00,                  /* wcChar4 */
     'o', 0x00,                  /* wcChar5 */
     'o', 0x00,                  /* wcChar6 */
